@@ -17,11 +17,25 @@ export class ExcelUploadService {
 
   async processExcelUpload(file: Express.Multer.File, masterDataType: MasterDataType): Promise<MasterDataVersion> {
     try {
+      // Log file object and buffer details for debugging
+      console.log('Uploaded file object:', file);
+      let fileBuffer: Buffer | undefined = file.buffer;
+      if (!fileBuffer) {
+        if (file.path) {
+          const fs = require('fs');
+          fileBuffer = fs.readFileSync(file.path);
+          console.log('Read file buffer from disk, length:', fileBuffer.length);
+        }
+      }
+      if (!fileBuffer) {
+        throw new Error('Uploaded file or file buffer is missing.');
+      }
+      console.log('File buffer type:', typeof fileBuffer, 'Buffer length:', fileBuffer ? fileBuffer.length : 'undefined');
       if (!this.validateExcelFile(file)) {
         throw new Error('Invalid file format. Please upload a valid Excel file.');
       }
 
-      const workbook = xlsx.read(file.buffer, { type: 'buffer' });
+      const workbook = xlsx.read(fileBuffer, { type: 'buffer' });
       
       if (!workbook.SheetNames || workbook.SheetNames.length === 0) {
         throw new Error('Excel file does not contain any sheets');
@@ -36,43 +50,42 @@ export class ExcelUploadService {
 
       // Convert worksheet to array of arrays first to validate structure
       const rawData = xlsx.utils.sheet_to_json(worksheet, { header: 1, defval: null, raw: false });
+      console.log('rawData:', JSON.stringify(rawData));
       
       if (!Array.isArray(rawData) || rawData.length === 0) {
         throw new Error('Failed to parse Excel data. Please ensure the file contains valid tabular data.');
       }
 
-      // Ensure we have at least a header row and one data row
-      if (rawData.length < 2) {
+      // Remove empty rows (all cells null/empty)
+      const filteredRawData = rawData.filter(row => Array.isArray(row) && row.some(cell => cell !== null && cell !== undefined && cell !== ''));
+      if (filteredRawData.length < 2) {
         throw new Error('Excel file must contain at least a header row and one data row.');
       }
 
       // Get headers from first row and validate
-      const headers = rawData[0];
+      const headers = filteredRawData[0];
+      console.log('headers:', JSON.stringify(headers));
       if (!Array.isArray(headers) || headers.length === 0 || headers.some(h => !h)) {
         throw new Error('Invalid or empty headers in Excel file.');
       }
 
-      // Convert raw data to objects using headers
-      const data = rawData.slice(1).map((row, idx) => {
-        if (!Array.isArray(row) || row.length === 0) {
-          throw new Error(`Empty or invalid data structure in row ${idx + 2}`);
+      // Convert raw data to objects using headers, skip empty rows
+      const data = filteredRawData.slice(1).map((row, idx) => {
+        if (!Array.isArray(row) || row.length === 0 || row.every(cell => cell === null || cell === undefined || cell === '')) {
+          // Skip empty rows
+          return null;
         }
-
-        // Ensure row has enough columns
-        if (row.length < headers.length) {
-          throw new Error(`Row ${idx + 2} has fewer columns than headers`);
+        // Pad row if shorter than headers
+        const paddedRow = [...row];
+        while (paddedRow.length < headers.length) {
+          paddedRow.push(null);
         }
-
         const obj: Record<string, any> = {};
         headers.forEach((header, i) => {
-          const value = row[i];
-          if (value === undefined || value === null) {
-            throw new Error(`Empty cell found in row ${idx + 2}, column ${header}`);
-          }
-          obj[header] = value;
+          obj[header] = paddedRow[i];
         });
         return obj;
-      });
+      }).filter(row => row !== null);
 
       if (data.length === 0) {
         throw new Error('Excel file contains no data rows.');
@@ -109,14 +122,14 @@ export class ExcelUploadService {
         // Validate all values in the row
         Object.entries(row).forEach(([key, value]) => {
           if (value === undefined || value === null || value === '') {
-            throw new Error(`Empty or invalid value found for field '${key}' in row ${i + 1}. All fields must have valid values.`);
+            throw new Error(`Empty or invalid value found for field '${key}' in row ${i + 2}. All fields must have valid values.`);
           }
         });
 
         // Validate that all required fields are present
         for (const field of fields) {
           if (!(field in row)) {
-            throw new Error(`Missing field '${field}' in row ${i + 1}. All fields must be present in each row.`);
+            throw new Error(`Missing field '${field}' in row ${i + 2}. All fields must be present in each row.`);
           }
         }
 
@@ -126,6 +139,7 @@ export class ExcelUploadService {
       return version;
     } catch (error: any) {
       const errorMessage = error.message || 'Unknown error occurred';
+      console.error('Excel processing error:', error);
       throw new Error(`Failed to process Excel file: ${errorMessage}`);
     }
   }
