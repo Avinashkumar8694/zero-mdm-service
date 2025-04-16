@@ -151,11 +151,17 @@
             "name": "Version Management",
             "item": [
                 {
-                    "name": "Create Version",
+                    "name": "Create Version with Data",
                     "request": {
                         "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
                         "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions",
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/data",
                             "host": [
                                 "{{baseUrl}}"
                             ],
@@ -164,8 +170,13 @@
                                 "mdm",
                                 "types",
                                 "{{mdmId}}",
-                                "versions"
+                                "versions",
+                                "data"
                             ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fields\": [\"field1\", \"field2\"],\n    \"records\": [\n        {\n            \"field1\": \"value1\",\n            \"field2\": \"value2\"\n        }\n    ]\n}"
                         }
                     }
                 },
@@ -312,7 +323,7 @@
             "name": "Record Management",
             "item": [
                 {
-                    "name": "Create Record",
+                    "name": "Create Record with Version",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -322,19 +333,23 @@
                             }
                         ],
                         "url": {
-                            "raw": "{{baseUrl}}/api/mdm/records",
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}/records",
                             "host": [
                                 "{{baseUrl}}"
                             ],
                             "path": [
                                 "api",
                                 "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions",
+                                "{{version}}",
                                 "records"
                             ]
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"data\": {}\n}"
+                            "raw": "{\n    \"data\": {\n        \"field1\": \"value1\",\n        \"field2\": \"value2\"\n    }\n}"
                         }
                     }
                 },
@@ -376,7 +391,55 @@
                     }
                 },
                 {
-                    "name": "Update Record",
+                    "name": "Search Records by Filter",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records/search?filter={\"field1\":\"value1\"}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "versions",
+                                "{{versionId}}",
+                                "records",
+                                "search"
+                            ],
+                            "query": [
+                                {
+                                    "key": "filter",
+                                    "value": "{\"field1\":\"value1\"}"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Record with Version",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions",
+                                "{{version}}",
+                                "records",
+                                "{{recordId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Record with Version",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -386,20 +449,24 @@
                             }
                         ],
                         "url": {
-                            "raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
                             "host": [
                                 "{{baseUrl}}"
                             ],
                             "path": [
                                 "api",
                                 "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions",
+                                "{{version}}",
                                 "records",
                                 "{{recordId}}"
                             ]
                         },
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"data\": {}\n}"
+                            "raw": "{\n    \"data\": {\n        \"field1\": \"updated_value1\",\n        \"field2\": \"updated_value2\"\n    }\n}"
                         }
                     }
                 },

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { MasterDataVersionService } from '../services/MasterDataVersionService';
 import { MasterDataTypeService } from '../services/MasterDataTypeService';
+import { MasterDataRecordService } from '../services/MasterDataRecordService';
 
 export class MasterDataVersionController {
   private versionService: MasterDataVersionService;
@@ -132,6 +133,33 @@ export class MasterDataVersionController {
       res.json(version);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch version' });
+    }
+  }
+
+  async createWithData(req: Request, res: Response): Promise<void> {
+    try {
+      const { mdmId } = req.params;
+      const { fields, records } = req.body;
+
+      const masterDataType = await this.typeService.findById(mdmId);
+      if (!masterDataType) {
+        res.status(404).json({ error: 'Master data type not found' });
+        return;
+      }
+
+      const version = await this.versionService.create(masterDataType, fields);
+      
+      if (records && Array.isArray(records)) {
+        const recordService = new MasterDataRecordService();
+        for (const recordData of records) {
+          await recordService.create(version, recordData);
+        }
+      }
+
+      const versionWithRecords = await this.versionService.findById(version.id);
+      res.status(201).json(versionWithRecords);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to create version with data' });
     }
   }
 }
