@@ -43,14 +43,17 @@ export class MasterDataVersionService {
   }
 
   async findByTypeAndTag(typeId: string, tag: string): Promise<MasterDataVersion | null> {
-    return this.repository.findOne({
-      where: {
-        masterDataType: { id: typeId },
-        tagList: tag
-      },
-      relations: ['masterDataType', 'records']
-    });
+    return this.repository.createQueryBuilder('version')
+      .leftJoinAndSelect('version.masterDataType', 'masterDataType')
+      .leftJoinAndSelect('version.records', 'records')
+      .where('masterDataType.id = :typeId', { typeId })
+      .andWhere('version.tagList LIKE :tagMatch', { tagMatch: `%${tag}%` })
+      .getOne();
   }
+  
+  
+  
+  
 
   async addTag(id: string, tag: string): Promise<MasterDataVersion | null> {
     const version = await this.findById(id);
