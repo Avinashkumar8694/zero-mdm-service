@@ -114,7 +114,8 @@ export class MasterDataVersionController {
         res.status(404).json({ error: 'Version not found' });
         return;
       }
-      res.json(version);
+      const { id, version: versionNumber, tagList } = version;
+      res.json({ id, version: versionNumber, tagList });
     } catch (error) {
       res.status(500).json({ error: 'Failed to remove tag' });
     }
