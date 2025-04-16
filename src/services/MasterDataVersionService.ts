@@ -79,4 +79,19 @@ export class MasterDataVersionService {
       order: { version: 'DESC' }
     });
   }
+
+  async getLatestVersion(typeId: string): Promise<MasterDataVersion | null> {
+    try {
+      const versions = await this.repository.find({
+        where: { masterDataType: { id: typeId } },
+        relations: ['masterDataType', 'records'],
+        order: { version: 'DESC' },
+        take: 1
+      });
+      return versions.length > 0 ? versions[0] : null;
+    } catch (error) {
+      console.error('Error fetching latest version:', error);
+      throw error;
+    }
+  }
 }

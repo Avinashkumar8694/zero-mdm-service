@@ -25,6 +25,11 @@ export const setupRoutes = (app: Express): void => {
   app.get('/api/mdm/types/:mdmId/versions/tag/:tag', versionController.findByTag.bind(versionController));
   app.post('/api/mdm/versions/:versionId/tags', versionController.addTag.bind(versionController));
   app.delete('/api/mdm/versions/:versionId/tags/:tag', versionController.removeTag.bind(versionController));
+  app.get('/api/mdm/versions/:versionId', versionController.findById.bind(versionController));
+  // app.get('/api/mdm/types/:mdmId/versions/:version', versionController.findByVersion.bind(versionController));
+  app.get('/api/mdm/types/:mdmId/versions/tag/:tag', versionController.findByTag.bind(versionController));
+  app.post('/api/mdm/versions/:versionId/tags', versionController.addTag.bind(versionController));
+  app.delete('/api/mdm/versions/:versionId/tags/:tag', versionController.removeTag.bind(versionController));
 
   // Record Management Routes
   app.post('/api/mdm/records', recordController.create.bind(recordController));

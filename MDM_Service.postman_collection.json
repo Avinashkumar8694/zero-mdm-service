@@ -1,0 +1,447 @@
+{
+    "info": {
+        "name": "MDM Service",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Master Data Types",
+            "item": [
+                {
+                    "name": "Create Master Data Type",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Customer\",\n    \"description\": \"Customer master data\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Master Data Types",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Master Data Type by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Master Data Type",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated Customer\",\n    \"description\": \"Updated customer master data\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Master Data Type",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Upload Excel File",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": ""
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/upload",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "upload"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Version Management",
+            "item": [
+                {
+                    "name": "Create Version",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Versions by Type",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Version by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "versions",
+                                "{{versionId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Version by Version Number",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions",
+                                "{{version}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Version by Tag",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/tag/{{tag}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions",
+                                "tag",
+                                "{{tag}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Tag to Version",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "versions",
+                                "{{versionId}}",
+                                "tags"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remove Tag from Version",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags/{{tag}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "versions",
+                                "{{versionId}}",
+                                "tags",
+                                "{{tag}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Latest Version",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/latest",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "types",
+                                "{{mdmId}}",
+                                "versions",
+                                "latest"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Record Management",
+            "item": [
+                {
+                    "name": "Create Record",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/records",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "records"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"data\": {}\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get Records by Version",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "versions",
+                                "{{versionId}}",
+                                "records"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Record by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "records",
+                                "{{recordId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Record",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "records",
+                                "{{recordId}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"data\": {}\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Record",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "records",
+                                "{{recordId}}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Search Records",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records/search",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "mdm",
+                                "versions",
+                                "{{versionId}}",
+                                "records",
+                                "search"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

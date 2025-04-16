@@ -40,7 +40,19 @@ export class MasterDataVersionController {
   async findByVersion(req: Request, res: Response): Promise<void> {
     try {
       const { mdmId, version } = req.params;
-      const versionData = await this.versionService.findByTypeAndVersion(mdmId, parseInt(version));
+      
+      let versionData;
+      if (version === 'latest') {
+        versionData = await this.versionService.getLatestVersion(mdmId);
+      } else {
+        const versionNumber = parseInt(version);
+        if (isNaN(versionNumber)) {
+          res.status(400).json({ error: 'Invalid version format. Must be a number or "latest"' });
+          return;
+        }
+        versionData = await this.versionService.findByTypeAndVersion(mdmId, versionNumber);
+      }
+
       if (!versionData) {
         res.status(404).json({ error: 'Version not found' });
         return;
@@ -62,6 +74,20 @@ export class MasterDataVersionController {
       res.json(version);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch version by tag' });
+    }
+  }
+
+  async findById(req: Request, res: Response): Promise<void> {
+    try {
+      const { versionId } = req.params;
+      const version = await this.versionService.findById(versionId);
+      if (!version) {
+        res.status(404).json({ error: 'Version not found' });
+        return;
+      }
+      res.json(version);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch version' });
     }
   }
 
@@ -91,6 +117,20 @@ export class MasterDataVersionController {
       res.json(version);
     } catch (error) {
       res.status(500).json({ error: 'Failed to remove tag' });
+    }
+  }
+
+  async getLatestVersion(req: Request, res: Response): Promise<void> {
+    try {
+      const { mdmId } = req.params;
+      const version = await this.versionService.getLatestVersion(mdmId);
+      if (!version) {
+        res.status(404).json({ error: 'No versions found for this master data type' });
+        return;
+      }
+      res.json(version);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch version' });
     }
   }
 }
