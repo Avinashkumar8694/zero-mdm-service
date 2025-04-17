@@ -17,6 +17,12 @@ export class MasterDataRecordController {
   async create(req: Request, res: Response): Promise<void> {
     try {
       const { versionId, data } = req.body;
+      
+      if (!versionId) {
+        res.status(400).json({ error: 'versionId is required' });
+        return;
+      }
+
       const version = await this.versionService.findById(versionId);
       if (!version) {
         res.status(404).json({ error: 'Version not found' });
