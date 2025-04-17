@@ -30,7 +30,8 @@ export class MasterDataRecordController {
       }
 
       const record = await this.recordService.create(version, data);
-      res.status(201).json(record);
+      const { id, data: recordData, createdAt } = record;
+      res.status(201).json({ id, data: recordData, createdAt, versionId: version.id });
     } catch (error) {
       res.status(500).json({ error: 'Failed to create record' });
     }
@@ -40,7 +41,13 @@ export class MasterDataRecordController {
     try {
       const { versionId } = req.params;
       const records = await this.recordService.findByVersion(versionId);
-      res.json(records);
+      const simplifiedRecords = records.map(record => ({
+        id: record.id,
+        data: record.data,
+        createdAt: record.createdAt,
+        versionId
+      }));
+      res.json(simplifiedRecords);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch records' });
     }
@@ -54,7 +61,8 @@ export class MasterDataRecordController {
         res.status(404).json({ error: 'Record not found' });
         return;
       }
-      res.json(record);
+      const { data: recordData, createdAt } = record;
+      res.json({ id, data: recordData, createdAt, versionId: record.version.id });
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch record' });
     }
@@ -69,7 +77,8 @@ export class MasterDataRecordController {
         res.status(404).json({ error: 'Record not found' });
         return;
       }
-      res.json(updatedRecord);
+      const { data: recordData, createdAt } = updatedRecord;
+      res.json({ id, data: recordData, createdAt, versionId: updatedRecord.version.id });
     } catch (error) {
       res.status(500).json({ error: 'Failed to update record' });
     }
@@ -94,7 +103,13 @@ export class MasterDataRecordController {
       const { versionId } = req.params;
       const filter = req.query.filter ? JSON.parse(req.query.filter as string) : {};
       const records = await this.recordService.searchByFilter(versionId, filter);
-      res.json(records);
+      const simplifiedRecords = records.map(record => ({
+        id: record.id,
+        data: record.data,
+        createdAt: record.createdAt,
+        versionId
+      }));
+      res.json(simplifiedRecords);
     } catch (error) {
       res.status(500).json({ error: 'Failed to search records' });
     }
@@ -112,7 +127,8 @@ export class MasterDataRecordController {
       }
 
       const record = await this.recordService.create(versionData, data);
-      res.status(201).json(record);
+      const { id, data: recordData, createdAt } = record;
+      res.status(201).json({ id, data: recordData, createdAt, versionId: versionData.id });
     } catch (error) {
       res.status(500).json({ error: 'Failed to create record' });
     }
@@ -136,7 +152,8 @@ export class MasterDataRecordController {
       }
 
       const updatedRecord = await this.recordService.update(recordId, data);
-      res.json(updatedRecord);
+      const { data: recordData, createdAt } = updatedRecord;
+      res.json({ id: recordId, data: recordData, createdAt, versionId: versionData.id });
     } catch (error) {
       res.status(500).json({ error: 'Failed to update record' });
     }

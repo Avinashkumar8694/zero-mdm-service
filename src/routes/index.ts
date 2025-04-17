@@ -29,14 +29,14 @@ export const setupRoutes = (app: Express): void => {
 
   // Record Management Routes
   app.post('/api/mdm/records', recordController.create.bind(recordController));
-  app.post('/api/mdm/types/:mdmId/versions/:version/records', recordController.createWithVersion.bind(recordController));
   app.get('/api/mdm/versions/:versionId/records', recordController.findByVersion.bind(recordController));
   app.get('/api/mdm/records/:id', recordController.findById.bind(recordController));
   app.put('/api/mdm/records/:id', recordController.update.bind(recordController));
-  app.put('/api/mdm/types/:mdmId/versions/:version/records/:recordId', recordController.updateWithVersion.bind(recordController));
   app.delete('/api/mdm/records/:id', recordController.delete.bind(recordController));
-  app.delete('/api/mdm/types/:mdmId/versions/:version/records/:recordId', recordController.deleteWithVersion.bind(recordController));
   app.get('/api/mdm/versions/:versionId/records/search', recordController.search.bind(recordController));
+  app.post('/api/mdm/types/:mdmId/versions/:version/records', recordController.createWithVersion.bind(recordController));
+  app.put('/api/mdm/types/:mdmId/versions/:version/records/:recordId', recordController.updateWithVersion.bind(recordController));
+  app.delete('/api/mdm/types/:mdmId/versions/:version/records/:recordId', recordController.deleteWithVersion.bind(recordController));
   
   // Version Management with Data Routes
   app.post('/api/mdm/types/:mdmId/versions-with-data', versionController.createWithData.bind(versionController));

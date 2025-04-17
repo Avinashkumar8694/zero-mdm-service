@@ -118,12 +118,20 @@ npm install
 
 3. Configure environment variables in `.env`:
 ```env
-PORT=3000
+# Database Configuration
 DB_HOST=localhost
 DB_PORT=5432
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+DB_USERNAME=zero
+DB_PASSWORD=zero
 DB_DATABASE=mdm_service
+
+# Server Configuration
+PORT=3000
+NODE_ENV=development
+
+# File Upload Configuration
+MAX_FILE_SIZE=10mb
+UPLOAD_DIR=uploads
 ```
 
 4. Build and start the service:
