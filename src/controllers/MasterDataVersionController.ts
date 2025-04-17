@@ -225,7 +225,17 @@ export class MasterDataVersionController {
       }
 
       const versionWithRecords = await this.versionService.findById(version.id);
-      res.status(201).json(versionWithRecords);
+      const response = {
+        id: versionWithRecords.id,
+        version: versionWithRecords.version,
+        fields: versionWithRecords.fields,
+        // records: versionWithRecords.records.map(record => ({
+        //   id: record.id,
+        //   data: record.data,
+        //   createdAt: record.createdAt
+        // }))
+      };
+      res.status(201).json(response);
     } catch (error) {
       res.status(500).json({ error: 'Failed to create version with data' });
     }
