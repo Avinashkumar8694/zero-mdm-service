@@ -181,10 +181,38 @@ export class MasterDataVersionController {
       const { mdmId } = req.params;
       const { fields, records } = req.body;
 
+      if (!fields || !Array.isArray(fields) || fields.length === 0) {
+        res.status(400).json({ error: 'Fields property is required and must be a non-empty array' });
+        return;
+      }
+
       const masterDataType = await this.typeService.findById(mdmId);
       if (!masterDataType) {
         res.status(404).json({ error: 'Master data type not found' });
         return;
+      }
+
+      if (records) {
+        if (!Array.isArray(records)) {
+          res.status(400).json({ error: 'Records must be an array' });
+          return;
+        }
+
+        for (const record of records) {
+          const recordFields = Object.keys(record);
+          const missingFields = fields.filter(field => !recordFields.includes(field));
+          const extraFields = recordFields.filter(field => !fields.includes(field));
+
+          if (missingFields.length > 0) {
+            res.status(400).json({ error: `Missing required fields in record: ${missingFields.join(', ')}` });
+            return;
+          }
+
+          if (extraFields.length > 0) {
+            res.status(400).json({ error: `Extra fields found in record: ${extraFields.join(', ')}` });
+            return;
+          }
+        }
       }
 
       const version = await this.versionService.create(masterDataType, fields);
