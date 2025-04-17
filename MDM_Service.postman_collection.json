@@ -1,514 +1,2283 @@
 {
-    "info": {
-        "name": "MDM Service",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-    },
-    "item": [
-        {
-            "name": "Master Data Types",
-            "item": [
-                {
-                    "name": "Create Master Data Type",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"name\": \"Customer\",\n    \"description\": \"Customer master data\"\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "Get All Master Data Types",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Master Data Type by ID",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Update Master Data Type",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"name\": \"Updated Customer\",\n    \"description\": \"Updated customer master data\"\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "Delete Master Data Type",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Upload Excel File",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "file",
-                                    "type": "file",
-                                    "src": ""
-                                }
-                            ]
-                        },
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/upload",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "upload"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Version Management",
-            "item": [
-                {
-                    "name": "Create Version with Data",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/data",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "data"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"fields\": [\"field1\", \"field2\"],\n    \"records\": [\n        {\n            \"field1\": \"value1\",\n            \"field2\": \"value2\"\n        }\n    ]\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "Get All Versions by Type",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Version by ID",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "versions",
-                                "{{versionId}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Version by Version Number",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "{{version}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Version by Tag",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/tag/{{tag}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "tag",
-                                "{{tag}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Add Tag to Version",
-                    "request": {
-                        "method": "POST",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "versions",
-                                "{{versionId}}",
-                                "tags"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Remove Tag from Version",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags/{{tag}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "versions",
-                                "{{versionId}}",
-                                "tags",
-                                "{{tag}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Latest Version",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/latest",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "latest"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Record Management",
-            "item": [
-                {
-                    "name": "Create Record with Version",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}/records",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "{{version}}",
-                                "records"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"data\": {\n        \"field1\": \"value1\",\n        \"field2\": \"value2\"\n    }\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "Get Records by Version",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "versions",
-                                "{{versionId}}",
-                                "records"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Record by ID",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "records",
-                                "{{recordId}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Search Records by Filter",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records/search?filter={\"field1\":\"value1\"}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "versions",
-                                "{{versionId}}",
-                                "records",
-                                "search"
-                            ],
-                            "query": [
-                                {
-                                    "key": "filter",
-                                    "value": "{\"field1\":\"value1\"}"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Delete Record with Version",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "{{version}}",
-                                "records",
-                                "{{recordId}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Update Record with Version",
-                    "request": {
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            }
-                        ],
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "types",
-                                "{{mdmId}}",
-                                "versions",
-                                "{{version}}",
-                                "records",
-                                "{{recordId}}"
-                            ]
-                        },
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\n    \"data\": {\n        \"field1\": \"updated_value1\",\n        \"field2\": \"updated_value2\"\n    }\n}"
-                        }
-                    }
-                },
-                {
-                    "name": "Delete Record",
-                    "request": {
-                        "method": "DELETE",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "records",
-                                "{{recordId}}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Search Records",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records/search",
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "path": [
-                                "api",
-                                "mdm",
-                                "versions",
-                                "{{versionId}}",
-                                "records",
-                                "search"
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    ]
+	"info": {
+		"_postman_id": "0fe68186-f91a-4730-904b-b576369a2a65",
+		"name": "MDM Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10411534"
+	},
+	"item": [
+		{
+			"name": "Master Data Types",
+			"item": [
+				{
+					"name": "Create Master Data Type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Customer\",\n    \"description\": \"Customer master data\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Master Data Type",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Customer\",\n    \"description\": \"Customer master data\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b-ckgDxqYJpVkmV7k30PSrk2gRi9c\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:05:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Customer\",\n    \"description\": \"Customer master data\",\n    \"id\": \"144b2d94-91a1-4d12-9661-df1ae8ab9f06\",\n    \"createdAt\": \"2025-04-16T14:35:54.782Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Master Data Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Master Data Types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "741"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e5-Xp202F1EnEKzjRQEYp4D8Kg9R6A\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:05:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\",\n        \"versions\": [\n            {\n                \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n                \"version\": 1,\n                \"tagList\": [],\n                \"fields\": [\n                    \"product_id\",\n                    \"current_name\",\n                    \"current_name_ar\",\n                    \"new_name\",\n                    \"cover_group\",\n                    \"cover_id\",\n                    \"cover_name\",\n                    \"cover_name_ar\",\n                    \"basic_cover\",\n                    \"add_on_cover\",\n                    \"morni_membership\",\n                    \"commission_direct_nb\",\n                    \"renewal_direct\",\n                    \"broker_nb_renewal\",\n                    \"tameeni_commission\",\n                    \"altheqa_commission\",\n                    \"eltezam_commission\",\n                    \"daman_commission\",\n                    \"bcare_commission\",\n                    \"diamond_commission\",\n                    \"najm_commission\",\n                    \"arb_commission\",\n                    \"arb_commission9\",\n                    \"banca_arb_na_commission\",\n                    \"retail_agency_na_commission\"\n                ],\n                \"createdAt\": \"2025-04-16T13:42:22.680Z\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Master Data Type by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Master Data Type by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "739"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e3-50oJT9YRtuUT1oGpyRD0jEBAIkk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:06:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n    \"name\": \"Updated Customer\",\n    \"description\": \"Updated customer master data\",\n    \"createdAt\": \"2025-04-16T13:22:35.488Z\",\n    \"versions\": [\n        {\n            \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n            \"version\": 1,\n            \"tagList\": [],\n            \"fields\": [\n                \"product_id\",\n                \"current_name\",\n                \"current_name_ar\",\n                \"new_name\",\n                \"cover_group\",\n                \"cover_id\",\n                \"cover_name\",\n                \"cover_name_ar\",\n                \"basic_cover\",\n                \"add_on_cover\",\n                \"morni_membership\",\n                \"commission_direct_nb\",\n                \"renewal_direct\",\n                \"broker_nb_renewal\",\n                \"tameeni_commission\",\n                \"altheqa_commission\",\n                \"eltezam_commission\",\n                \"daman_commission\",\n                \"bcare_commission\",\n                \"diamond_commission\",\n                \"najm_commission\",\n                \"arb_commission\",\n                \"arb_commission9\",\n                \"banca_arb_na_commission\",\n                \"retail_agency_na_commission\"\n            ],\n            \"createdAt\": \"2025-04-16T13:42:22.680Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Master Data Type",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Customer COUPONS\",\n    \"description\": \"Updated customer master data\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Master Data Type",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Updated Customer COUPONS\",\n    \"description\": \"Updated customer master data\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "747"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2eb-sCMT5bb9oK1UPtmRpZw7wulLQQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:07:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n    \"name\": \"Updated Customer COUPONS\",\n    \"description\": \"Updated customer master data\",\n    \"createdAt\": \"2025-04-16T13:22:35.488Z\",\n    \"versions\": [\n        {\n            \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n            \"version\": 1,\n            \"tagList\": [],\n            \"fields\": [\n                \"product_id\",\n                \"current_name\",\n                \"current_name_ar\",\n                \"new_name\",\n                \"cover_group\",\n                \"cover_id\",\n                \"cover_name\",\n                \"cover_name_ar\",\n                \"basic_cover\",\n                \"add_on_cover\",\n                \"morni_membership\",\n                \"commission_direct_nb\",\n                \"renewal_direct\",\n                \"broker_nb_renewal\",\n                \"tameeni_commission\",\n                \"altheqa_commission\",\n                \"eltezam_commission\",\n                \"daman_commission\",\n                \"bcare_commission\",\n                \"diamond_commission\",\n                \"najm_commission\",\n                \"arb_commission\",\n                \"arb_commission9\",\n                \"banca_arb_na_commission\",\n                \"retail_agency_na_commission\"\n            ],\n            \"createdAt\": \"2025-04-16T13:42:22.680Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Master Data Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Master Data Type",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:07:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Upload Excel File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/upload",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Version Management",
+			"item": [
+				{
+					"name": "Create Version",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fields\": [\"name\", \"code\", \"description\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Versions by Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Versions by Type",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1058"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"422-CHQ+xkq0d8BTen82vo6ewV0ubeM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:08:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"0549a009-fa14-4ba5-bca4-cd549e1dfd04\",\n        \"version\": 2,\n        \"tagList\": [],\n        \"fields\": null,\n        \"createdAt\": \"2025-04-16T14:38:41.502Z\",\n        \"masterDataType\": {\n            \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n            \"name\": \"Updated Customer COUPONS\",\n            \"description\": \"Updated customer master data\",\n            \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n        }\n    },\n    {\n        \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n        \"version\": 1,\n        \"tagList\": [],\n        \"fields\": [\n            \"product_id\",\n            \"current_name\",\n            \"current_name_ar\",\n            \"new_name\",\n            \"cover_group\",\n            \"cover_id\",\n            \"cover_name\",\n            \"cover_name_ar\",\n            \"basic_cover\",\n            \"add_on_cover\",\n            \"morni_membership\",\n            \"commission_direct_nb\",\n            \"renewal_direct\",\n            \"broker_nb_renewal\",\n            \"tameeni_commission\",\n            \"altheqa_commission\",\n            \"eltezam_commission\",\n            \"daman_commission\",\n            \"bcare_commission\",\n            \"diamond_commission\",\n            \"najm_commission\",\n            \"arb_commission\",\n            \"arb_commission9\",\n            \"banca_arb_na_commission\",\n            \"retail_agency_na_commission\"\n        ],\n        \"createdAt\": \"2025-04-16T13:42:22.680Z\",\n        \"masterDataType\": {\n            \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n            \"name\": \"Updated Customer COUPONS\",\n            \"description\": \"Updated customer master data\",\n            \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Version by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"versions",
+								"{{versionId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Version by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"versions",
+										"{{versionId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15476"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c74-nEsdBI9+l4MTIMvE2orDgi/EAlg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:10:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n    \"version\": 1,\n    \"tagList\": [],\n    \"fields\": [\n        \"product_id\",\n        \"current_name\",\n        \"current_name_ar\",\n        \"new_name\",\n        \"cover_group\",\n        \"cover_id\",\n        \"cover_name\",\n        \"cover_name_ar\",\n        \"basic_cover\",\n        \"add_on_cover\",\n        \"morni_membership\",\n        \"commission_direct_nb\",\n        \"renewal_direct\",\n        \"broker_nb_renewal\",\n        \"tameeni_commission\",\n        \"altheqa_commission\",\n        \"eltezam_commission\",\n        \"daman_commission\",\n        \"bcare_commission\",\n        \"diamond_commission\",\n        \"najm_commission\",\n        \"arb_commission\",\n        \"arb_commission9\",\n        \"banca_arb_na_commission\",\n        \"retail_agency_na_commission\"\n    ],\n    \"createdAt\": \"2025-04-16T13:42:22.680Z\",\n    \"masterDataType\": {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer COUPONS\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n    },\n    \"records\": [\n        {\n            \"id\": \"aa5add26-7847-43f9-a2c3-a8fb146e3326\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.704Z\"\n        },\n        {\n            \"id\": \"3e8ac5a4-afef-4df4-9d17-e83519e51b5c\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.722Z\"\n        },\n        {\n            \"id\": \"32e79126-91cc-41d5-9cad-19080f05d520\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.734Z\"\n        },\n        {\n            \"id\": \"39beab56-04ae-4a4b-b2a7-384d66db36dc\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.746Z\"\n        },\n        {\n            \"id\": \"8b7fcb0b-ff71-4ac7-ac6f-120f9bc08ad3\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.758Z\"\n        },\n        {\n            \"id\": \"cbf592f7-8e19-4b7f-a200-699e1508b4ff\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.770Z\"\n        },\n        {\n            \"id\": \"1c60ac5d-0077-4237-a45b-f3567cfcfae4\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.796Z\"\n        },\n        {\n            \"id\": \"add3cdea-f949-47ad-8ca2-22db11c6c513\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.818Z\"\n        },\n        {\n            \"id\": \"8d9023c3-ffe7-4e94-856a-2e8497d4ce7b\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.840Z\"\n        },\n        {\n            \"id\": \"98232839-fafc-4690-8e78-f64ef5722e1e\",\n            \"data\": {\n                \"cover_id\": \"601061\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Replacement for Motor vehicle's rent\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"بدل إيجار السيارة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.862Z\"\n        },\n        {\n            \"id\": \"06051295-9207-463a-a621-af99b9421968\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.883Z\"\n        },\n        {\n            \"id\": \"37d7fbfe-fda6-452c-924b-842c4a23a122\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.902Z\"\n        },\n        {\n            \"id\": \"26d98810-75d2-409f-810c-ee4d05582167\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.916Z\"\n        },\n        {\n            \"id\": \"586da001-e21a-4db2-8c80-6f7ab340008d\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.926Z\"\n        },\n        {\n            \"id\": \"cde6ef93-622d-40cb-b65d-46b95469dc8c\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.938Z\"\n        },\n        {\n            \"id\": \"f1237b0d-af67-41af-a3bd-9750ab859d8e\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.951Z\"\n        },\n        {\n            \"id\": \"d6263dbd-0a4a-4f05-bc17-3641b39c8ca4\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.964Z\"\n        },\n        {\n            \"id\": \"55a75be0-ade0-4ac5-97a7-7afd227891b6\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.974Z\"\n        },\n        {\n            \"id\": \"102020b8-58a9-4024-8feb-e9baef265027\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.984Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Version by Version Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions",
+								"{{version}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Version by Version Number",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/{{version}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions",
+										"{{version}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15476"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c74-nEsdBI9+l4MTIMvE2orDgi/EAlg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:11:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n    \"version\": 1,\n    \"tagList\": [],\n    \"fields\": [\n        \"product_id\",\n        \"current_name\",\n        \"current_name_ar\",\n        \"new_name\",\n        \"cover_group\",\n        \"cover_id\",\n        \"cover_name\",\n        \"cover_name_ar\",\n        \"basic_cover\",\n        \"add_on_cover\",\n        \"morni_membership\",\n        \"commission_direct_nb\",\n        \"renewal_direct\",\n        \"broker_nb_renewal\",\n        \"tameeni_commission\",\n        \"altheqa_commission\",\n        \"eltezam_commission\",\n        \"daman_commission\",\n        \"bcare_commission\",\n        \"diamond_commission\",\n        \"najm_commission\",\n        \"arb_commission\",\n        \"arb_commission9\",\n        \"banca_arb_na_commission\",\n        \"retail_agency_na_commission\"\n    ],\n    \"createdAt\": \"2025-04-16T13:42:22.680Z\",\n    \"masterDataType\": {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer COUPONS\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n    },\n    \"records\": [\n        {\n            \"id\": \"aa5add26-7847-43f9-a2c3-a8fb146e3326\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.704Z\"\n        },\n        {\n            \"id\": \"3e8ac5a4-afef-4df4-9d17-e83519e51b5c\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.722Z\"\n        },\n        {\n            \"id\": \"32e79126-91cc-41d5-9cad-19080f05d520\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.734Z\"\n        },\n        {\n            \"id\": \"39beab56-04ae-4a4b-b2a7-384d66db36dc\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.746Z\"\n        },\n        {\n            \"id\": \"8b7fcb0b-ff71-4ac7-ac6f-120f9bc08ad3\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.758Z\"\n        },\n        {\n            \"id\": \"cbf592f7-8e19-4b7f-a200-699e1508b4ff\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.770Z\"\n        },\n        {\n            \"id\": \"1c60ac5d-0077-4237-a45b-f3567cfcfae4\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.796Z\"\n        },\n        {\n            \"id\": \"add3cdea-f949-47ad-8ca2-22db11c6c513\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.818Z\"\n        },\n        {\n            \"id\": \"8d9023c3-ffe7-4e94-856a-2e8497d4ce7b\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.840Z\"\n        },\n        {\n            \"id\": \"98232839-fafc-4690-8e78-f64ef5722e1e\",\n            \"data\": {\n                \"cover_id\": \"601061\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Replacement for Motor vehicle's rent\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"بدل إيجار السيارة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.862Z\"\n        },\n        {\n            \"id\": \"06051295-9207-463a-a621-af99b9421968\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.883Z\"\n        },\n        {\n            \"id\": \"37d7fbfe-fda6-452c-924b-842c4a23a122\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.902Z\"\n        },\n        {\n            \"id\": \"26d98810-75d2-409f-810c-ee4d05582167\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.916Z\"\n        },\n        {\n            \"id\": \"586da001-e21a-4db2-8c80-6f7ab340008d\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.926Z\"\n        },\n        {\n            \"id\": \"cde6ef93-622d-40cb-b65d-46b95469dc8c\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.938Z\"\n        },\n        {\n            \"id\": \"f1237b0d-af67-41af-a3bd-9750ab859d8e\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.951Z\"\n        },\n        {\n            \"id\": \"d6263dbd-0a4a-4f05-bc17-3641b39c8ca4\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.964Z\"\n        },\n        {\n            \"id\": \"55a75be0-ade0-4ac5-97a7-7afd227891b6\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.974Z\"\n        },\n        {\n            \"id\": \"102020b8-58a9-4024-8feb-e9baef265027\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.984Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Tag to Version",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tag\" : \"v1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"versions",
+								"{{versionId}}",
+								"tags"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Tag to Version",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tag\" : \"v1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"versions",
+										"{{versionId}}",
+										"tags"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15492"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c84-z6zlqxjrnAQh3OtIcbSd4GbN2r4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 20:12:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n    \"version\": 1,\n    \"tagList\": [\n        \"undefined\",\n        \"v1\"\n    ],\n    \"fields\": [\n        \"product_id\",\n        \"current_name\",\n        \"current_name_ar\",\n        \"new_name\",\n        \"cover_group\",\n        \"cover_id\",\n        \"cover_name\",\n        \"cover_name_ar\",\n        \"basic_cover\",\n        \"add_on_cover\",\n        \"morni_membership\",\n        \"commission_direct_nb\",\n        \"renewal_direct\",\n        \"broker_nb_renewal\",\n        \"tameeni_commission\",\n        \"altheqa_commission\",\n        \"eltezam_commission\",\n        \"daman_commission\",\n        \"bcare_commission\",\n        \"diamond_commission\",\n        \"najm_commission\",\n        \"arb_commission\",\n        \"arb_commission9\",\n        \"banca_arb_na_commission\",\n        \"retail_agency_na_commission\"\n    ],\n    \"createdAt\": \"2025-04-16T13:42:22.680Z\",\n    \"masterDataType\": {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer COUPONS\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n    },\n    \"records\": [\n        {\n            \"id\": \"aa5add26-7847-43f9-a2c3-a8fb146e3326\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.704Z\"\n        },\n        {\n            \"id\": \"3e8ac5a4-afef-4df4-9d17-e83519e51b5c\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.722Z\"\n        },\n        {\n            \"id\": \"32e79126-91cc-41d5-9cad-19080f05d520\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.734Z\"\n        },\n        {\n            \"id\": \"39beab56-04ae-4a4b-b2a7-384d66db36dc\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.746Z\"\n        },\n        {\n            \"id\": \"8b7fcb0b-ff71-4ac7-ac6f-120f9bc08ad3\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.758Z\"\n        },\n        {\n            \"id\": \"cbf592f7-8e19-4b7f-a200-699e1508b4ff\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.770Z\"\n        },\n        {\n            \"id\": \"1c60ac5d-0077-4237-a45b-f3567cfcfae4\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.796Z\"\n        },\n        {\n            \"id\": \"add3cdea-f949-47ad-8ca2-22db11c6c513\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.818Z\"\n        },\n        {\n            \"id\": \"8d9023c3-ffe7-4e94-856a-2e8497d4ce7b\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.840Z\"\n        },\n        {\n            \"id\": \"98232839-fafc-4690-8e78-f64ef5722e1e\",\n            \"data\": {\n                \"cover_id\": \"601061\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Replacement for Motor vehicle's rent\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"بدل إيجار السيارة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.862Z\"\n        },\n        {\n            \"id\": \"06051295-9207-463a-a621-af99b9421968\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.883Z\"\n        },\n        {\n            \"id\": \"37d7fbfe-fda6-452c-924b-842c4a23a122\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.902Z\"\n        },\n        {\n            \"id\": \"26d98810-75d2-409f-810c-ee4d05582167\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.916Z\"\n        },\n        {\n            \"id\": \"586da001-e21a-4db2-8c80-6f7ab340008d\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.926Z\"\n        },\n        {\n            \"id\": \"cde6ef93-622d-40cb-b65d-46b95469dc8c\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.938Z\"\n        },\n        {\n            \"id\": \"f1237b0d-af67-41af-a3bd-9750ab859d8e\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.951Z\"\n        },\n        {\n            \"id\": \"d6263dbd-0a4a-4f05-bc17-3641b39c8ca4\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.964Z\"\n        },\n        {\n            \"id\": \"55a75be0-ade0-4ac5-97a7-7afd227891b6\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.974Z\"\n        },\n        {\n            \"id\": \"102020b8-58a9-4024-8feb-e9baef265027\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.984Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Version by Tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/tag/{{tag}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions",
+								"tag",
+								"{{tag}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Version by Tag",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/tag/{{tag}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions",
+										"tag",
+										"{{tag}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15492"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c84-z6zlqxjrnAQh3OtIcbSd4GbN2r4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 21:00:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n    \"version\": 1,\n    \"tagList\": [\n        \"undefined\",\n        \"v1\"\n    ],\n    \"fields\": [\n        \"product_id\",\n        \"current_name\",\n        \"current_name_ar\",\n        \"new_name\",\n        \"cover_group\",\n        \"cover_id\",\n        \"cover_name\",\n        \"cover_name_ar\",\n        \"basic_cover\",\n        \"add_on_cover\",\n        \"morni_membership\",\n        \"commission_direct_nb\",\n        \"renewal_direct\",\n        \"broker_nb_renewal\",\n        \"tameeni_commission\",\n        \"altheqa_commission\",\n        \"eltezam_commission\",\n        \"daman_commission\",\n        \"bcare_commission\",\n        \"diamond_commission\",\n        \"najm_commission\",\n        \"arb_commission\",\n        \"arb_commission9\",\n        \"banca_arb_na_commission\",\n        \"retail_agency_na_commission\"\n    ],\n    \"createdAt\": \"2025-04-16T13:42:22.680Z\",\n    \"masterDataType\": {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer COUPONS\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n    },\n    \"records\": [\n        {\n            \"id\": \"aa5add26-7847-43f9-a2c3-a8fb146e3326\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.704Z\"\n        },\n        {\n            \"id\": \"3e8ac5a4-afef-4df4-9d17-e83519e51b5c\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.722Z\"\n        },\n        {\n            \"id\": \"32e79126-91cc-41d5-9cad-19080f05d520\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.734Z\"\n        },\n        {\n            \"id\": \"39beab56-04ae-4a4b-b2a7-384d66db36dc\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.746Z\"\n        },\n        {\n            \"id\": \"8b7fcb0b-ff71-4ac7-ac6f-120f9bc08ad3\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Third Party Liability\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600460\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Basic\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"2\",\n                \"renewal_direct\": \"1\",\n                \"arb_commission9\": \"2\",\n                \"current_name_ar\": \"وافي الاساسي\",\n                \"najm_commission\": \"2\",\n                \"bcare_commission\": \"2\",\n                \"daman_commission\": \"2\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"2\",\n                \"altheqa_commission\": \"2\",\n                \"diamond_commission\": \"2\",\n                \"eltezam_commission\": \"2\",\n                \"tameeni_commission\": \"2\",\n                \"commission_direct_nb\": \"1.5\",\n                \"banca_arb_na_commission\": \"2\",\n                \"retail_agency_na_commission\": \"2\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.758Z\"\n        },\n        {\n            \"id\": \"cbf592f7-8e19-4b7f-a200-699e1508b4ff\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.770Z\"\n        },\n        {\n            \"id\": \"1c60ac5d-0077-4237-a45b-f3567cfcfae4\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.796Z\"\n        },\n        {\n            \"id\": \"add3cdea-f949-47ad-8ca2-22db11c6c513\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.818Z\"\n        },\n        {\n            \"id\": \"8d9023c3-ffe7-4e94-856a-2e8497d4ce7b\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.840Z\"\n        },\n        {\n            \"id\": \"98232839-fafc-4690-8e78-f64ef5722e1e\",\n            \"data\": {\n                \"cover_id\": \"601061\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Replacement for Motor vehicle's rent\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"بدل إيجار السيارة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.862Z\"\n        },\n        {\n            \"id\": \"06051295-9207-463a-a621-af99b9421968\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.883Z\"\n        },\n        {\n            \"id\": \"37d7fbfe-fda6-452c-924b-842c4a23a122\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.902Z\"\n        },\n        {\n            \"id\": \"26d98810-75d2-409f-810c-ee4d05582167\",\n            \"data\": {\n                \"cover_id\": \"600465\",\n                \"new_name\": \"Comprehensive\",\n                \"cover_name\": \"Windscreen + Fire + Theft\",\n                \"product_id\": \"600461\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"Comprehensive\",\n                \"cover_name_ar\": \"الزجاج الأمامي + الحريق + السرقة\",\n                \"arb_commission\": \"10\",\n                \"renewal_direct\": \"4\",\n                \"arb_commission9\": \"10\",\n                \"current_name_ar\": \"وافي الشامل\",\n                \"najm_commission\": \"10\",\n                \"bcare_commission\": \"10\",\n                \"daman_commission\": \"10\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"10\",\n                \"altheqa_commission\": \"10\",\n                \"diamond_commission\": \"10\",\n                \"eltezam_commission\": \"10\",\n                \"tameeni_commission\": \"10\",\n                \"commission_direct_nb\": \"7.5\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.916Z\"\n        },\n        {\n            \"id\": \"586da001-e21a-4db2-8c80-6f7ab340008d\",\n            \"data\": {\n                \"cover_id\": \"600120\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Geographical Extension Coverage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية التمديد الجغرافي\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.926Z\"\n        },\n        {\n            \"id\": \"cde6ef93-622d-40cb-b65d-46b95469dc8c\",\n            \"data\": {\n                \"cover_id\": \"1296\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Natural Perils\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المخاطر الطبيعية\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.938Z\"\n        },\n        {\n            \"id\": \"f1237b0d-af67-41af-a3bd-9750ab859d8e\",\n            \"data\": {\n                \"cover_id\": \"1337\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Own Damage\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"الضرر الخاص\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.951Z\"\n        },\n        {\n            \"id\": \"d6263dbd-0a4a-4f05-bc17-3641b39c8ca4\",\n            \"data\": {\n                \"cover_id\": \"601060\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Personal Accident coverage (Driver and Passenger)\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"تغطية الحوادث الشخصية (السائق والراكب)\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.964Z\"\n        },\n        {\n            \"id\": \"55a75be0-ade0-4ac5-97a7-7afd227891b6\",\n            \"data\": {\n                \"cover_id\": \"600100\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Roadside Assistance\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"N\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"Y\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"المساعدة على الطريق\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"TRUE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.974Z\"\n        },\n        {\n            \"id\": \"102020b8-58a9-4024-8feb-e9baef265027\",\n            \"data\": {\n                \"cover_id\": \"2\",\n                \"new_name\": \"Smart\",\n                \"cover_name\": \"Third Party Liability\",\n                \"product_id\": \"600462\",\n                \"basic_cover\": \"Y\",\n                \"cover_group\": \"Other\",\n                \"add_on_cover\": \"N\",\n                \"current_name\": \"WAFI Smart\",\n                \"cover_name_ar\": \"مسؤولية الطرف الثالث\",\n                \"arb_commission\": \"4\",\n                \"renewal_direct\": \"3\",\n                \"arb_commission9\": \"4\",\n                \"current_name_ar\": \"وافي سمارت\",\n                \"najm_commission\": \"4\",\n                \"bcare_commission\": \"4\",\n                \"daman_commission\": \"4\",\n                \"morni_membership\": \"FALSE\",\n                \"broker_nb_renewal\": \"4\",\n                \"altheqa_commission\": \"4\",\n                \"diamond_commission\": \"4\",\n                \"eltezam_commission\": \"4\",\n                \"tameeni_commission\": \"4\",\n                \"commission_direct_nb\": \"6\",\n                \"banca_arb_na_commission\": \"15\",\n                \"retail_agency_na_commission\": \"15\"\n            },\n            \"createdAt\": \"2025-04-16T13:42:22.984Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove Tag from Version",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags/{{tag}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"versions",
+								"{{versionId}}",
+								"tags",
+								"{{tag}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove Tag from Version",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/tags/{{tag}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"versions",
+										"{{versionId}}",
+										"tags",
+										"{{tag}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-rSbS1IDRs+rQOQGkqDDr0imZzk0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 21:06:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"53aebd4b-6439-4e92-9c59-da87827855af\",\n    \"version\": 1,\n    \"tagList\": [\n        \"v1\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Latest Version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/latest",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions",
+								"latest"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Latest Version",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/types/{{mdmId}}/versions/latest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions",
+										"latest"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "317"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13d-iLG7ZGq9XFS4hQqW68u3O/TPpig\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 21:06:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"0549a009-fa14-4ba5-bca4-cd549e1dfd04\",\n    \"version\": 2,\n    \"tagList\": [],\n    \"fields\": null,\n    \"createdAt\": \"2025-04-16T14:38:41.502Z\",\n    \"masterDataType\": {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer COUPONS\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n    },\n    \"records\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Record Management",
+			"item": [
+				{
+					"name": "Create Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"versionId\": \"{{versionId}}\",\n    \"data\": {\n        \"name\": \"sdsd\",\n        \"code\": \"sdsd\",\n        \"description\": \"sdsd\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/records",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"records"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Record",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"versionId\": \"{{versionId}}\",\n    \"data\": {\n        \"name\": \"sdsd\",\n        \"code\": \"sdsd\",\n        \"description\": \"sdsd\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/records",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"records"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c1-5NEEfoE6aLkw3Cn4irjCyS+MU94\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:19:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"37c2b693-53ea-458c-b4fa-3e8d6276f8f8\",\n    \"data\": {\n        \"name\": \"sdsd\",\n        \"code\": \"sdsd\",\n        \"description\": \"sdsd\"\n    },\n    \"createdAt\": \"2025-04-17T14:49:53.833Z\",\n    \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Records by VersionID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"versions",
+								"{{versionId}}",
+								"records"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Records by Version",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"versions",
+										"{{versionId}}",
+										"records"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "583"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"247-Me8NRSoj42ABSjxI3M6QbzMqp8Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:20:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"8491200d-bf2b-4286-be0e-11784d47b64f\",\n        \"data\": {\n            \"code\": \"sdsd\",\n            \"name\": \"sdsd\",\n            \"description\": \"sdsd\"\n        },\n        \"createdAt\": \"2025-04-17T14:18:03.680Z\",\n        \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n    },\n    {\n        \"id\": \"37c2b693-53ea-458c-b4fa-3e8d6276f8f8\",\n        \"data\": {\n            \"code\": \"sdsd\",\n            \"name\": \"sdsd\",\n            \"description\": \"sdsd\"\n        },\n        \"createdAt\": \"2025-04-17T14:49:53.833Z\",\n        \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n    },\n    {\n        \"id\": \"1b249dd4-e4cf-463d-a1a7-dfed04aee848\",\n        \"data\": {\n            \"code\": \"sdsd\",\n            \"name\": \"sdsd\",\n            \"description\": \"sdsd\"\n        },\n        \"createdAt\": \"2025-04-17T14:15:49.207Z\",\n        \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Record by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"records",
+								"{{recordId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Record by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"records",
+										"{{recordId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c1-jDgrE6xEk8e9wsxUzU128QoMOX8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:20:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"8491200d-bf2b-4286-be0e-11784d47b64f\",\n    \"data\": {\n        \"code\": \"sdsd\",\n        \"name\": \"sdsd\",\n        \"description\": \"sdsd\"\n    },\n    \"createdAt\": \"2025-04-17T14:18:03.680Z\",\n    \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Record",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"code\": \"sdsd\",\n        \"name\": \"sdsd\",\n        \"description\": \"sdsd\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"records",
+								"{{recordId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Record",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"code\": \"sdsd\",\n        \"name\": \"sdsd\",\n        \"description\": \"sdsd\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"records",
+										"{{recordId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c1-jDgrE6xEk8e9wsxUzU128QoMOX8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:22:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"8491200d-bf2b-4286-be0e-11784d47b64f\",\n    \"data\": {\n        \"code\": \"sdsd\",\n        \"name\": \"sdsd\",\n        \"description\": \"sdsd\"\n    },\n    \"createdAt\": \"2025-04-17T14:18:03.680Z\",\n    \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"records",
+								"{{recordId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Record",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/records/{{recordId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"records",
+										"{{recordId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:23:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Search Records",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records/search?filter={\"name\":\"sdsd\", \"code\":\"sdsd\"}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"mdm",
+								"versions",
+								"{{versionId}}",
+								"records",
+								"search"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"name\":\"sdsd\", \"code\":\"sdsd\"}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search Records",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/mdm/versions/{{versionId}}/records/search?filter={\"name\":\"sdsd\", \"code\":\"sdsd\"}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"mdm",
+										"versions",
+										"{{versionId}}",
+										"records",
+										"search"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "{\"name\":\"sdsd\", \"code\":\"sdsd\"}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "389"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"185-roNjlwFAsLkL+Yj96XMI2dFjMMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:30:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"37c2b693-53ea-458c-b4fa-3e8d6276f8f8\",\n        \"data\": {\n            \"code\": \"sdsd\",\n            \"name\": \"sdsd\",\n            \"description\": \"sdsd\"\n        },\n        \"createdAt\": \"2025-04-17T14:49:53.833Z\",\n        \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n    },\n    {\n        \"id\": \"1b249dd4-e4cf-463d-a1a7-dfed04aee848\",\n        \"data\": {\n            \"code\": \"sdsd\",\n            \"name\": \"sdsd\",\n            \"description\": \"sdsd\"\n        },\n        \"createdAt\": \"2025-04-17T14:15:49.207Z\",\n        \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "create new record mdmid and version",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"sdsd\",\r\n        \"code\": \"sdsd\",\r\n        \"description\": \"sdsd6666\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions/{{version}}/records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions",
+								"{{version}}",
+								"records"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create new record mdmid and version",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n        \"name\": \"sdsd\",\r\n        \"code\": \"sdsd\",\r\n        \"description\": \"sdsd6666\"\r\n    }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions/{{version}}/records",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions",
+										"{{version}}",
+										"records"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-i5Dt1owpOhRSYxmKMrnoemMr028\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:42:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"8b2b7c93-cb58-43b5-848d-a46254007d98\",\n    \"data\": {\n        \"name\": \"sdsd\",\n        \"code\": \"sdsd\",\n        \"description\": \"sdsd6666\"\n    },\n    \"createdAt\": \"2025-04-17T15:12:32.058Z\",\n    \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update record mdm id and version",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n            \"code\": \"asdfghj\",\r\n            \"name\": \"sdsd\",\r\n            \"description\": \"sdsd\"\r\n        }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions",
+								"{{version}}",
+								"records",
+								"{{recordId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update record mdm id and version",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n            \"code\": \"asdfghj\",\r\n            \"name\": \"sdsd\",\r\n            \"description\": \"sdsd\"\r\n        }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions",
+										"{{version}}",
+										"records",
+										"{{recordId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "196"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c4-l4LpNnIGpK/F1Xs3ure5nX1CAn8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:49:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"37c2b693-53ea-458c-b4fa-3e8d6276f8f8\",\n    \"data\": {\n        \"code\": \"asdfghj\",\n        \"name\": \"sdsd\",\n        \"description\": \"sdsd\"\n    },\n    \"createdAt\": \"2025-04-17T14:49:53.833Z\",\n    \"versionId\": \"2dfb2777-74fa-403e-a260-974a2f6d3edd\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete recorn using mdmid version and recordid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions",
+								"{{version}}",
+								"records",
+								"{{recordId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete recorn using mdmid version and recordid",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions/{{version}}/records/{{recordId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions",
+										"{{version}}",
+										"records",
+										"{{recordId}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 20:50:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create new version for mdmid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fields\": [\"field1\", \"field2\"], \"records\": [{\"field1\": \"value1\", \"field2\": \"value2\"}]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions-with-data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"mdm",
+								"types",
+								"{{mdmId}}",
+								"versions-with-data"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create new version for mdmid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"fields\": [\"name\", \"code\", \"description\"], \"records\": [{\"name\":\"Avi\", \"code\":\"code\",\"description\":\"\"}]}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/mdm/types/{{mdmId}}/versions-with-data",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"mdm",
+										"types",
+										"{{mdmId}}",
+										"versions-with-data"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1df-UmjuZj/ZeNmvLqMSq3U4lZO59DM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Apr 2025 21:01:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"59f4498c-4575-4813-a434-a1b18c7bdcc4\",\n    \"version\": 6,\n    \"tagList\": [],\n    \"fields\": [\n        \"name\",\n        \"code\",\n        \"description\"\n    ],\n    \"createdAt\": \"2025-04-17T15:31:06.067Z\",\n    \"masterDataType\": {\n        \"id\": \"f2460cf5-1196-4c06-96ec-3118e1f08192\",\n        \"name\": \"Updated Customer COUPONS\",\n        \"description\": \"Updated customer master data\",\n        \"createdAt\": \"2025-04-16T13:22:35.488Z\"\n    },\n    \"records\": [\n        {\n            \"id\": \"b29a5526-a07e-4e08-8ac9-a56957a3211c\",\n            \"data\": {\n                \"code\": \"code\",\n                \"name\": \"Avi\",\n                \"description\": \"\"\n            },\n            \"createdAt\": \"2025-04-17T15:31:06.085Z\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "mdmId",
+			"value": "f2460cf5-1196-4c06-96ec-3118e1f08192",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "versionId",
+			"value": "53aebd4b-6439-4e92-9c59-da87827855af",
+			"type": "string"
+		},
+		{
+			"key": "version",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "tag",
+			"value": "v1",
+			"type": "string"
+		},
+		{
+			"key": "recordId",
+			"value": "8491200d-bf2b-4286-be0e-11784d47b64f",
+			"type": "string"
+		}
+	]
 }
