@@ -10,7 +10,24 @@ export class MasterDataRecordService {
     this.repository = AppDataSource.getRepository(MasterDataRecord);
   }
 
+  private validateFields(data: Record<string, any>, fields: string[]): boolean {
+    const dataFields = Object.keys(data);
+    return fields.every(field => dataFields.includes(field)) &&
+           dataFields.every(field => fields.includes(field));
+  }
+
   async create(version: MasterDataVersion, data: Record<string, any>): Promise<MasterDataRecord> {
+    // For new versions without fields, use the first record's fields as schema
+    if (!version.fields || version.fields.length === 0) {
+      version.fields = Object.keys(data);
+      await AppDataSource.getRepository(MasterDataVersion).save(version);
+    } else {
+      // Validate that the data matches the version's field schema
+      if (!this.validateFields(data, version.fields)) {
+        throw new Error(`Record data fields do not match version schema. Expected fields: ${version.fields.join(', ')}`);
+      }
+    }
+
     const record = new MasterDataRecord();
     record.version = version;
     record.data = data;

@@ -15,6 +15,12 @@ export class MasterDataVersionController {
   async create(req: Request, res: Response): Promise<void> {
     try {
       const { mdmId, fields } = req.body;
+      
+      if (!fields || !Array.isArray(fields) || fields.length === 0) {
+        res.status(400).json({ error: 'Fields property is required and must be a non-empty array' });
+        return;
+      }
+
       const masterDataType = await this.typeService.findById(mdmId);
       if (!masterDataType) {
         res.status(404).json({ error: 'Master data type not found' });
@@ -22,7 +28,12 @@ export class MasterDataVersionController {
       }
 
       const version = await this.versionService.create(masterDataType, fields);
-      res.status(201).json(version);
+      res.status(201).json({
+        id: version.id,
+        version: version.version,
+        fields: version.fields,
+        createdAt: version.createdAt
+      });
     } catch (error) {
       res.status(500).json({ error: 'Failed to create version' });
     }
@@ -32,7 +43,14 @@ export class MasterDataVersionController {
     try {
       const { mdmId } = req.params;
       const versions = await this.versionService.getVersionsByType(mdmId);
-      res.json(versions);
+      const simplifiedVersions = versions.map(version => ({
+        id: version.id,
+        version: version.version,
+        fields: version.fields,
+        tagList: version.tagList,
+        createdAt: version.createdAt
+      }));
+      res.json(simplifiedVersions);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch versions' });
     }
@@ -58,7 +76,15 @@ export class MasterDataVersionController {
         res.status(404).json({ error: 'Version not found' });
         return;
       }
-      res.json(versionData);
+
+      const simplifiedVersion = {
+        id: versionData.id,
+        version: versionData.version,
+        fields: versionData.fields,
+        tagList: versionData.tagList,
+        createdAt: versionData.createdAt
+      };
+      res.json(simplifiedVersion);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch version' });
     }
@@ -72,7 +98,14 @@ export class MasterDataVersionController {
         res.status(404).json({ error: 'Version not found for the given tag' });
         return;
       }
-      res.json(version);
+      const simplifiedVersion = {
+        id: version.id,
+        version: version.version,
+        fields: version.fields,
+        tagList: version.tagList,
+        createdAt: version.createdAt
+      };
+      res.json(simplifiedVersion);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch version by tag' });
     }
@@ -86,7 +119,14 @@ export class MasterDataVersionController {
         res.status(404).json({ error: 'Version not found' });
         return;
       }
-      res.json(version);
+      const simplifiedVersion = {
+        id: version.id,
+        version: version.version,
+        fields: version.fields,
+        tagList: version.tagList,
+        createdAt: version.createdAt
+      };
+      res.json(simplifiedVersion);
     } catch (error) {
       res.status(500).json({ error: 'Failed to fetch version' });
     }
