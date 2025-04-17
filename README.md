@@ -1,4 +1,6 @@
-You're designing a Generic Master Data Management System (MDMS) with:
+# Generic Master Data Management System (MDMS)
+
+A flexible and powerful Master Data Management System built with TypeORM and PostgreSQL that provides:
 
 🔄 CRUD operations on any master data type (products, users, projects, etc.)
 
@@ -6,150 +8,164 @@ You're designing a Generic Master Data Management System (MDMS) with:
 
 🔧 Each version is editable via APIs
 
-🏷️ Versions can be tagged
+🏷️ Versions can be tagged for easy reference
 
-🔍 Searchable using MDM ID + version or tag
+🔍 Searchable using type ID + version or tag
 
-Let’s define the project architecture, data model, and API structure for your use case.
+## Core Concepts
 
-📦 Project Name: Generic MDM Service
-✅ Core Concepts
+| Concept | Description |
+|---------|-------------|
+| Master Data Type | Entity like Product, User, Project with unique name and description |
+| Version | Each data upload or API creation generates a new version with its own schema |
+| Tag | Labels like "latest", "prod", "test" that can be mapped to specific versions |
+| Record | Individual data entries stored within a version with flexible JSON structure |
 
-Concept	Description
-Master Data Type	Entity like Product, User, Project
-MDM ID	Unique identifier for each master data type (e.g., product → MDM ID: mdm_001)
-Excel Upload	Triggers creation of a new version
-Version	Each upload = new version of data
-Tag	Labels like latest, prod, test mapped to specific versions
-Version Editing	Support full CRUD within a version (update, delete rows, etc.)
-🧱 High-Level Architecture
-pgsql
-Copy
-Edit
+## High-Level Architecture
+
+```
 +------------------+      +--------------------+      +--------------------+
 |   Frontend UI    | ---> |   MDM API Gateway  | ---> |   MDM Core Service |
 +------------------+      +--------------------+      +--------------------+
                                                            |
                                                 +----------------------+
-                                                |      MongoDB /       |
-                                                |  PostgreSQL (JSONB)   |
+                                                |     PostgreSQL       |
+                                                |    (JSONB Fields)    |
                                                 +----------------------+
-🗂️ Data Model
-🔷 master_data_types
+```
+
+## API Documentation
+
+Detailed API documentation with examples is available in the following files:
+
+- [Master Data Types Management](curl/master-data-types.md)
+- [Version Management](curl/version-management.md)
+- [Record Management](curl/record-management.md)
+- [Excel Upload Operations](curl/excel-upload.md)
+
+## Postman Collection
+
+A comprehensive Postman collection is available for testing all API endpoints. Import the following file into Postman:
+
+- [MDM Service Postman Collection](MDM_Service.postman_collection.json)
+
+## Data Model
+
+### 🔷 master_data_types
 Stores metadata of each master data type.
 
-
+```typescript
 {
-  "_id": "mdm_001",
-  "name": "Product",
-  "description": "Product catalog",
-  "createdAt": "2025-04-16"
+  id: string;          // UUID
+  name: string;        // Unique name (indexed)
+  description: string; // Optional description
+  createdAt: Date;     // Creation timestamp
+  versions: MasterDataVersion[]; // One-to-many relationship with versions
 }
-🔷 master_data_versions
+```
+
+### 🔷 master_data_versions
 Each version corresponds to a dataset uploaded or created via API.
 
-
+```typescript
 {
-  "_id": "ver_001",
-  "mdmId": "mdm_001",
-  "version": 1,
-  "tagList": ["latest", "draft"],
-  "fields": ["name", "price", "category"],
-  "createdAt": "2025-04-16"
+  id: string;          // UUID
+  version: number;      // Version number
+  tagList: string[];    // Array of tags (e.g., ["latest", "prod"])
+  fields: string[];     // Schema fields for this version
+  createdAt: Date;     // Creation timestamp
+  masterDataType: MasterDataType; // Many-to-one relationship with type
+  records: MasterDataRecord[];    // One-to-many relationship with records
 }
-🔷 master_data_records
-Stored per version. Could be in sub-collections like records_ver_001, or in a single table with reference to ver_001.
+```
 
+### 🔷 master_data_records
+Stores the actual data records for each version.
 
+```typescript
 {
-  "versionId": "ver_001",
-  "data": {
-    "name": "Laptop",
-    "price": 1000,
-    "category": "Electronics"
-  }
+  id: string;          // UUID
+  data: object;        // Flexible JSON data structure (JSONB)
+  createdAt: Date;     // Creation timestamp
+  version: MasterDataVersion; // Many-to-one relationship with version
 }
-🛠️ API Design
-🧾 Master Data Type
-Create Master Type
-POST /mdm/types
+```
 
+## Features
 
-{
-  "name": "Product",
-  "description": "Product catalog"
-}
-List Master Types
-GET /mdm/types
+- **Type Management**: Create and manage different types of master data with unique names and descriptions
+- **Version Control**: Each data upload or API creation generates a new version with its own schema definition
+- **Tagging System**: Flexible tagging system for versions (e.g., "latest", "prod", "test") for easy reference and retrieval
+- **Excel Upload**: Bulk import data from Excel files with automatic schema detection
+- **Flexible Schema**: Each version maintains its own field structure using fields array
+- **CRUD Operations**: Complete API support for managing types, versions, and records
+- **JSON Storage**: Efficient storage using PostgreSQL JSONB fields with indexing support
 
-📥 Upload Excel (Creates Version)
-POST /mdm/:mdmId/upload
+## Setup and Configuration
 
-Multipart: Excel file
+### Prerequisites
+- Node.js (v14 or higher)
+- PostgreSQL (v12 or higher)
+- TypeScript
 
-Auto-generates schema + version
+### Installation
 
-Returns versionId
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+```
 
-✍️ Update Version Data (CRUD)
-Add a Record to Version
-POST /mdm/:mdmId/data?version=1
+3. Configure environment variables in `.env`:
+```env
+PORT=3000
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+DB_DATABASE=mdm_service
+```
 
+4. Build and start the service:
+```bash
+npm run build
+npm start
+```
 
-{
-  "name": "Tablet",
-  "price": 500,
-  "category": "Electronics"
-}
-Update Record by ID
-PUT /mdm/:mdmId/data/:recordId?version=1
+## Usage Examples
 
-Delete Record
-DELETE /mdm/:mdmId/data/:recordId?version=1
+### Creating a Master Data Type
+```bash
+curl -X POST http://localhost:3000/api/mdm/types \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Product",
+    "description": "Product catalog master data"
+  }'
+```
 
-🔍 Fetch/Search Records
-By Version
-GET /mdm/:mdmId/data?version=1
+### Creating a Version with Schema
+```bash
+curl -X POST http://localhost:3000/api/mdm/types/{mdmId}/versions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fields": ["name", "sku", "price", "category"]
+  }'
+```
 
-By Tag
-GET /mdm/:mdmId/data?tag=latest
-
-Filtered Search
-GET /mdm/:mdmId/data?version=2&filter={"category":"Electronics"}
-
-🏷️ Tag Management
-Apply/Update Tag
-POST /mdm/:mdmId/tag
-
-
-{
-  "tag": "prod",
-  "version": 3
-}
-Get Tags
-GET /mdm/:mdmId/tags
-
-📚 Get Version History
-GET /mdm/:mdmId/versions
-
-Returns list of versions and tags per master data.
-
-🧰 Tech Stack Recommendation
-
-Layer	Tech
-Backend	Node.js (NestJS) or Spring Boot
-File Parsing	xlsx (Node), multer
-Storage (flexible schema)	MongoDB or PostgreSQL (JSONB)
-Auth (if needed)	JWT/OAuth2
-Frontend (optional)	Angular/React for admin UI
-✅ Key Advantages of This Design
-✅ Supports all master data types
-
-✅ Each upload = versioned snapshot
-
-✅ Immutable + editable versions
-
-✅ Tags offer stable reference points (e.g., prod)
-
-✅ Version-aware CRUD
+### Adding Records to a Version
+```bash
+curl -X POST http://localhost:3000/api/mdm/records \
+  -H "Content-Type: application/json" \
+  -d '{
+    "versionId": "your-version-id",
+    "data": {
+      "name": "Product A",
+      "sku": "SKU001",
+      "price": 99.99,
+      "category": "Electronics"
+    }
+  }'
+```
+```
 
